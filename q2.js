@@ -1,8 +1,5 @@
-function sumit()
-{
-var nm = document.getElementById("name").value;
-var lnm = document.getElementById("lname").value;
-var bnm = document.getElementById("birth").value;
-var finl= nm + lnm +bnm;
-document.getElementById("final").innerHTML = finl;
+function func(){
+    var classification = ["John Hill", "Mary Jane", "Gary Vee", "Paricia Mills", "Helen Hall", "Paul Green"];
+    var top = classification.slice(3, 6);
+    document.getElementById("result").innerHTML = top.join();
 }
