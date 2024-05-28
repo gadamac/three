@@ -1,21 +1,34 @@
-function calculateResult() {
-	const grade1 = document.getElementById("grade1").value;
-	const grade2 = document.getElementById("grade2").value;
-	const absences = document.getElementById("absences").value;
-	const presence = 20 - absences;
-	const average = (Number(grade1) + Number(grade2)) / 2;
-	const resultElement = document.getElementById("result");
-	
-	if (presence / 20 >= 0.7 && average >= 6.5) {
-		resultElement.textContent = "Approved";
-	} else {
-		let reason = "";
-		if (presence / 20 < 0.7) {
-			reason += "Absences, ";
-		}
-		if (average < 6.5) {
-			reason += "Insufficient grade";
-		}
-		resultElement.textContent = "Failed: " + reason.trim();
+let startTime = 0;
+let intervalId = 0;
+let isRunning = false;
+
+const startButton = document.getElementById("start-button");
+const stopButton = document.getElementById("stop-button");
+const displayElement = document.getElementById("stopwatch-display");
+
+startButton.addEventListener("click", startStopwatch);
+stopButton.addEventListener("click", stopStopwatch);
+
+function startStopwatch() {
+	if (!isRunning) {
+		startTime = new Date().getTime();
+		intervalId = setInterval(updateStopwatch, 1);
+		isRunning = true;
 	}
+}
+function stopStopwatch() {
+	if (isRunning) {
+		clearInterval(intervalId);
+		isRunning = false;
+	}
+}
+function updateStopwatch() {
+	const currentTime = new Date().getTime();
+	const elapsedTime = currentTime - startTime;
+	const hours = Math.floor(elapsedTime / 3600000);
+	const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+	const seconds = Math.floor(((elapsedTime % 60000) / 1000));
+	const milliseconds = Math.floor((elapsedTime % 1000));
+	const displayString = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}:${milliseconds.toString().padStart(3, "0")}`;
+	displayElement.textContent = displayString;
 }
