@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>question no 3</title>
 </head>
 <body>
-    <h1>Course Details</h1>
-	<div>
-		<label>Course title:</label>
-		<p id="coursetitle"></p>
-	</div>
-	<div>
-		<label>Main Category:</label>
-		<span id="maincategory"></span>
-	</div>
-	<div>
-		<label>Percentage of 5 stars reviews:</label>
-		<span id="percentage"></span>
-	</div>
+    <h1>Student Result</h1>
+	<label for="grade1">Grade 1:</label>
+	<input type="number" id="grade1" placeholder="Enter Grade 1">
+	<br>
+	<label for="grade2">Grade 2:</label>
+	<input type="number" id="grade2" placeholder="Enter Grade 2">
+	<br>
+	<label for="absences">Absences:</label>
+	<input type="number" id="absences" placeholder="Enter Absences">
+	<br>
+	<button onclick="calculateResult()">Calculate Result</button>
+	<p id="result"></p>
     <script src="q3.js"></script>
 </body>
 </html>
